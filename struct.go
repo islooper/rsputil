@@ -29,7 +29,11 @@ func SetStructVals(structPtr interface{}, datas map[string]interface{}) {
 		if data, ok := datas[t.Name]; ok {
 			dV := reflect.ValueOf(data)
 			if dV.Type().Name() != f.Type().Name() {
-				panic("type is not same," + "arrt:" + t.Name + "type is " + t.Type.Name() + ", data type is " + dV.Type().Name())
+				if f.Type().Name() == "" {
+					f.Set(dV)
+				} else {
+					panic("type is not same," + "arrt:" + t.Name + "type is " + t.Type.Name() + ", data type is " + dV.Type().Name())
+				}
 			} else {
 				f.Set(dV)
 			}

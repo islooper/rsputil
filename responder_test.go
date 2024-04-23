@@ -16,7 +16,7 @@ const (
 type CreateSharingRsp struct {
 	Code    int32
 	Message string
-	Data    string
+	Data    interface{}
 }
 
 // 指针
